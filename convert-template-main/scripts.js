@@ -3,6 +3,8 @@ const currency = document.getElementById("currency")
 const form = document.querySelector("form")
 const footer = document.querySelector("main footer")
 const description = document.getElementById("description")
+const result = document.getElementById("result")
+
 
 const valueDolar = 6.04;
 const valueEuro = 6.30;
@@ -37,6 +39,15 @@ function convertCurrency(amount, price, symbol){
     try{
         // Exibindo a cotação da moeda selecionada
         description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
+
+        let total = amount * price
+
+        // Se tirar do replace pra frente ele ver formatado com o R$ atras do valor, com o replace trocamos o R$ por nada
+        total = formatCurrencyBRL(total).replace("R$", "")
+
+        result.textContent = `${total} Reais`
+
+
         // Aplica a classe que exibe o footer para mostrar o resultado
         footer.classList.add("show-result")
     }catch(error){
