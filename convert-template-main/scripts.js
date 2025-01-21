@@ -1,6 +1,9 @@
 const amount = document.getElementById("amount")
 const currency = document.getElementById("currency")
 const form = document.querySelector("form")
+const valueDolar = 6.04;
+const valueEuro = 6.30;
+const valueLibra = 7.00;
 
 // Manipulando o input amount para receber apenas numeros
 amount.addEventListener("input", () => {
@@ -11,6 +14,21 @@ amount.addEventListener("input", () => {
 // Capturando o evento de submit do formulario
 form.onsubmit = (event) => {
     // Desativa o recarrecamento automatico da pagina
-    event.preventDefault()
-    console.log(currency.value)
+    event.preventDefault()    
+    
+    switch(currency.value){
+        case "USD":
+            convertCurrency(amount.value, valueDolar, "US$")
+            break
+        case "EUR":
+            convertCurrency(amount.value, valueEuro, "€")
+            break
+        case "GBP":
+            convertCurrency(amount.value, valueLibra, "£")
+            break
+    }
+}
+
+// Função para converter a moeda
+function convertCurrency(amount, price, symbol){
 }
